@@ -1,4 +1,7 @@
-use crate::{lamport::LamportTimestamp, types::{OrderId, OrderType, Price, Quantity, Side, TradeId}};
+use crate::{
+    lamport::LamportTimestamp,
+    types::{OrderId, OrderType, Price, Quantity, Side, TradeId},
+};
 use std::fmt;
 
 #[derive(Debug, Clone, PartialEq, Eq)]
@@ -9,7 +12,7 @@ pub enum Event {
         order_type: OrderType,
         price: Price,
         quantity: Quantity,
-        timestamp: LamportTimestamp
+        timestamp: LamportTimestamp,
     },
     OrderFilled {
         trade_id: TradeId,
@@ -17,12 +20,12 @@ pub enum Event {
         ask_order_id: OrderId,
         price: Price,
         quantity: Quantity,
-        timestamp: LamportTimestamp
+        timestamp: LamportTimestamp,
     },
     OrderCancelled {
         order_id: OrderId,
-        timestamp: LamportTimestamp
-    }
+        timestamp: LamportTimestamp,
+    },
 }
 
 impl Event {
@@ -30,7 +33,7 @@ impl Event {
         match self {
             Event::OrderPlaced { timestamp, .. }
             | Event::OrderFilled { timestamp, .. }
-            | Event::OrderCancelled { timestamp, .. } => *timestamp
+            | Event::OrderCancelled { timestamp, .. } => *timestamp,
         }
     }
 }

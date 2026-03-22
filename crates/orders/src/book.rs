@@ -1,10 +1,10 @@
-use events::types::{Price, Quantity};
 use crate::{order::Order, trade::MatchResult};
+use events::types::{Price, Quantity};
 use std::collections::BTreeMap;
 
 #[derive(Debug, Clone)]
 struct PriceLevel {
-    orders: Vec<Order>
+    orders: Vec<Order>,
 }
 
 impl PriceLevel {
@@ -42,7 +42,6 @@ pub struct OrderBook {
     asks: BTreeMap<Price, PriceLevel>,
 }
 
-
 impl OrderBook {
     pub fn best_bid(&self) -> Option<Price> {
         self.bids.keys().next_back().copied()
@@ -55,14 +54,14 @@ impl OrderBook {
     pub fn spread(&self) -> Option<i64> {
         match (self.best_ask(), self.best_bid()) {
             (Some(a), Some(b)) => Some(a as i64 - b as i64),
-            _ => None
+            _ => None,
         }
     }
 
     pub fn mid_price(&self) -> Option<f64> {
         match (self.best_ask(), self.best_bid()) {
             (Some(a), Some(b)) => Some((a as f64 + b as f64) / 2.0),
-            _ => None
+            _ => None,
         }
     }
 

@@ -1,4 +1,7 @@
-use events::{lamport::LamportTimestamp, types::{OrderId, OrderType, Price, Quantity, Side}};
+use events::{
+    lamport::LamportTimestamp,
+    types::{OrderId, OrderType, Price, Quantity, Side},
+};
 use std::fmt;
 
 #[derive(Debug, Clone)]
@@ -9,7 +12,7 @@ pub struct Order {
     pub price: Price,
     pub quantity: Quantity,
     pub remaining: Quantity,
-    pub timestamp: LamportTimestamp
+    pub timestamp: LamportTimestamp,
 }
 
 impl Order {
@@ -42,7 +45,13 @@ impl fmt::Display for Order {
         write!(
             f,
             "Order#{} {} {} px={} qty={}/{} {}",
-            self.id, self.side, self.order_type, self.price, self.remaining, self.quantity, self.timestamp
+            self.id,
+            self.side,
+            self.order_type,
+            self.price,
+            self.remaining,
+            self.quantity,
+            self.timestamp
         )
     }
 }

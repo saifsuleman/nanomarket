@@ -1,4 +1,7 @@
-use events::{lamport::LamportTimestamp, types::{OrderId, Price, Quantity, TradeId}};
+use events::{
+    lamport::LamportTimestamp,
+    types::{OrderId, Price, Quantity, TradeId},
+};
 use std::fmt;
 
 #[derive(Debug, Clone, PartialEq, Eq)]
@@ -24,7 +27,12 @@ impl fmt::Display for Trade {
         write!(
             f,
             "Trade#{} [bid={} ask={} px={} qty={} {}]",
-            self.id, self.bid_order_id, self.ask_order_id, self.price, self.quantity, self.timestamp
+            self.id,
+            self.bid_order_id,
+            self.ask_order_id,
+            self.price,
+            self.quantity,
+            self.timestamp
         )
     }
 }

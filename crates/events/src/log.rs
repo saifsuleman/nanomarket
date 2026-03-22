@@ -2,7 +2,7 @@ use crate::event::Event;
 
 #[derive(Debug, Clone)]
 pub struct EventLog {
-    events: Vec<Event>
+    events: Vec<Event>,
 }
 
 impl EventLog {
