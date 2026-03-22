@@ -17,3 +17,6 @@ version = "0.1.0"
 [[package]]
 name = "orders"
 version = "0.1.0"
+dependencies = [
+ "events",
+]
